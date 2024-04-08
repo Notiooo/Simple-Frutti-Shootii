@@ -3,7 +3,7 @@ using UnityEngine.XR.Content.Animation;
 
 namespace UnityEngine.XR.Content.Interaction
 {
-    public class TargetRing : MonoBehaviour, IAnimationEventActionBegin, IAnimationEventActionFinished
+    public class TargetRing : MonoBehaviour, IAnimationEventActionBegin
     {
         const string k_ActiveLabel = "active";
 
@@ -25,12 +25,6 @@ namespace UnityEngine.XR.Content.Interaction
         {
             if (label == k_ActiveLabel)
                 m_OnActive.Invoke();
-        }
-
-        void IAnimationEventActionFinished.ActionFinished(string label)
-        {
-            if (label == k_ActiveLabel)
-                m_OnInactive.Invoke();
         }
     }
 }

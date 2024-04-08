@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class RevolverController : MonoBehaviour {
 	public float revRotSpeed;			// revolver rotation speed
@@ -7,6 +8,8 @@ public class RevolverController : MonoBehaviour {
 
 	private bool rotatingRev = false;
 	private bool rotatingCyl = false;
+
+	private bool firedGun = true;
 	private float endAngle = 60F;		// rotated angle
 
 	void Start () {
@@ -19,6 +22,9 @@ public class RevolverController : MonoBehaviour {
 
 		if (rotatingCyl) {
 			RotateCyl ();
+			if(!firedGun){
+				FireGun();
+			}
 		}
 	}
 
@@ -33,10 +39,16 @@ public class RevolverController : MonoBehaviour {
 		if (cylTr.localRotation.eulerAngles.y < endAngle ) {
 			rotatingCyl = true;
 			Quaternion target = Quaternion.Euler (0, endAngle, 0); 
-			cylTr.localRotation = Quaternion.RotateTowards (cylTr.localRotation, target, Time.deltaTime * 100F);
+			cylTr.localRotation = Quaternion.RotateTowards (cylTr.localRotation, target, Time.deltaTime * 400F);
 		} else {
 			rotatingCyl = false;
+			firedGun = false;
 			endAngle += 60F;
 		}
+	}
+
+	public void FireGun() {
+		Debug.Log ("BAM");
+		firedGun = true;
 	}
 }

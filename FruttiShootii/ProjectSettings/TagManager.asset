@@ -12,7 +12,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gun(Ignore Bullet Raycast)
   - Water
   - UI
   - 
