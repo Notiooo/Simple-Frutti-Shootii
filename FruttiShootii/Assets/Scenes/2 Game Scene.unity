@@ -1627,6 +1627,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6605779780745817407, guid: a4a54d30e97ac40af84d8505fa63ef93,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605779780745817407, guid: a4a54d30e97ac40af84d8505fa63ef93,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6612974337440326847, guid: a4a54d30e97ac40af84d8505fa63ef93,
         type: 3}
       propertyPath: m_Name
@@ -4649,6 +4659,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605779780745817407, guid: a4a54d30e97ac40af84d8505fa63ef93,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605779780745817407, guid: a4a54d30e97ac40af84d8505fa63ef93,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6612974337440326847, guid: a4a54d30e97ac40af84d8505fa63ef93,
         type: 3}
@@ -7941,6 +7961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092005311466866292, guid: a4a54d30e97ac40af84d8505fa63ef93,
         type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092005311466866292, guid: a4a54d30e97ac40af84d8505fa63ef93,
+        type: 3}
       propertyPath: SizeModule.enabled
       value: 1
       objectReference: {fileID: 0}
@@ -8528,6 +8553,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605779780745817407, guid: a4a54d30e97ac40af84d8505fa63ef93,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605779780745817407, guid: a4a54d30e97ac40af84d8505fa63ef93,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6612974337440326847, guid: a4a54d30e97ac40af84d8505fa63ef93,
         type: 3}
