@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.EventSystems;
 
 public class RevolverController : MonoBehaviour {
 	public float revRotSpeed;			// revolver rotation speed
 	public Transform cylTr;				// ref to cylinder of revolver
+
+	public Transform barrel;
 
 	private bool rotatingRev = false;
 	private bool rotatingCyl = false;
@@ -12,8 +15,15 @@ public class RevolverController : MonoBehaviour {
 	private bool firedGun = true;
 	private float endAngle = 60F;		// rotated angle
 
+	public float gunDamage = 10;
+	public float gunHitForceMagnitude = 4;
+	public float gunHitRange = 1000;
+
+	private LineRenderer lineRenderer;
+
 	void Start () {
 		cylTr = cylTr.transform;
+		lineRenderer = this.GetComponent<LineRenderer>();
 	}
 
 	void Update () {
@@ -48,7 +58,32 @@ public class RevolverController : MonoBehaviour {
 	}
 
 	public void FireGun() {
-		Debug.Log ("BAM");
 		firedGun = true;
+
+		RaycastHit rayHit;
+		if(Physics.Raycast(barrel.transform.position, barrel.transform.forward, out rayHit, gunHitRange)) {
+			Shootable fool = rayHit.collider.GetComponentInParent<Shootable> ();
+			if (fool != null) {
+				Vector3 hitForce = barrel.transform.forward * gunHitForceMagnitude;
+				fool.Hit(gunDamage, hitForce, rayHit.point);
+			}
+			// Debug line
+			StartCoroutine (DrawDebugLine(barrel.transform.position, rayHit.point));
+		}
+		else {
+			// Debug line
+			StartCoroutine (DrawDebugLine(barrel.transform.position, barrel.transform.position + barrel.transform.forward * gunHitRange));
+		}
 	}
+
+	private IEnumerator DrawDebugLine(Vector3 start, Vector3 end)
+    {
+        lineRenderer.SetPosition(0, start);
+		lineRenderer.SetPosition(1, end);
+		lineRenderer.enabled = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        lineRenderer.enabled = false;
+    }
 }
