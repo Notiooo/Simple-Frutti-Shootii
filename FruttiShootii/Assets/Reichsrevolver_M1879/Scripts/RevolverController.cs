@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
-using UnityEngine.EventSystems;
 
 public class RevolverController : MonoBehaviour {
 	public float revRotSpeed;			// revolver rotation speed
@@ -20,10 +18,13 @@ public class RevolverController : MonoBehaviour {
 	public float gunHitRange = 1000;
 
 	private LineRenderer lineRenderer;
+	private AudioSource audioSource;
+	public AudioClip[] gunShotClips;
 
 	void Start () {
 		cylTr = cylTr.transform;
 		lineRenderer = this.GetComponent<LineRenderer>();
+		audioSource = this.GetComponentInChildren<AudioSource>();
 	}
 
 	void Update () {
@@ -59,6 +60,9 @@ public class RevolverController : MonoBehaviour {
 
 	public void FireGun() {
 		firedGun = true;
+
+		audioSource.clip = gunShotClips[Random.Range(0, gunShotClips.Length)];
+		audioSource.Play();
 
 		RaycastHit rayHit;
 		if(Physics.Raycast(barrel.transform.position, barrel.transform.forward, out rayHit, gunHitRange)) {
