@@ -7,7 +7,7 @@ namespace UnityEngine.XR.Content.Animation
     /// Will receive triggers from the <see cref="AnimationEventActionBegin"/> and <see cref="AnimationEventActionFinished"/> classes,
     /// and forward them to Unity Events.
     /// </summary>
-    public class OnAnimationEvent : MonoBehaviour, IAnimationEventActionBegin, IAnimationEventActionFinished
+    public class OnAnimationEvent : MonoBehaviour, IAnimationEventActionBegin
     {
         [Serializable]
         struct ActionEvent
