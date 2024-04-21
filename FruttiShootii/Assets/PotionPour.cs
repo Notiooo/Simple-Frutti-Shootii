@@ -6,10 +6,8 @@ using UnityEngine.EventSystems;
 public class PotionPour : MonoBehaviour
 {
     Transform flaskTip;
-
+    public AudioClip audioClip;
     bool successfullPour = false;
-
-    public GameObject narrator;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +29,7 @@ public class PotionPour : MonoBehaviour
         Physics.Raycast(flaskTip.position, Vector3.down, out rayHit, 10);
         if(rayHit.transform.name == "WateringCan" && !successfullPour){
             successfullPour = true;
-            //narrator.cośtam
+            NarrationManager.Instance.PlayNarration(audioClip, false, true);
         }
     }
 }
