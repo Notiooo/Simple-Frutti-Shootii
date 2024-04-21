@@ -16,9 +16,10 @@ TagManager:
   - Gun(Ignore Bullet Raycast)
   - Water
   - UI
+  - Ignore Doors
+  - Door
+  - Terrain
   - Grab Interactable
-  - 
-  - 
   - 
   - 
   - 
