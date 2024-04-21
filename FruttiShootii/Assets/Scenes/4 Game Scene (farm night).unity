@@ -17992,7 +17992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   narrationClips:
   - clip: {fileID: 8300000, guid: 9d0cc86cb8e1f5b40ad3fd9901cdd373, type: 3}
-    delay: 0
+    delay: 2
     isUrgent: 0
     shouldClearQueue: 0
   - clip: {fileID: 8300000, guid: a786615867b378942952cc4f68361f38, type: 3}

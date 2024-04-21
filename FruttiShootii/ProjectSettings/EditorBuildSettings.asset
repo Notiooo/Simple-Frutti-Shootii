@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/1 Start Scene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/2 Game Scene.unity
-    guid: eccb2bc76074b2849b626b75e749890d
+    path: Assets/Scenes/4 Game Scene (farm night).unity
+    guid: 4fef19af1fe0b0b4f990449a64e54b97
+  - enabled: 1
+    path: Assets/Scenes/5 Game Scene (farm day).unity
+    guid: 1ac867d00bad54e4285cde7ddf8a23fa
+  - enabled: 1
+    path: Assets/Scenes/3 Game Scene (psycho).unity
+    guid: 92b7379d050d50f4d919a372bb1d626f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 2238d457089b9494896515a25debf01c,
       type: 2}
