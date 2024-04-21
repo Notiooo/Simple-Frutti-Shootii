@@ -8,6 +8,7 @@ TagManager:
   - Flame
   - Water
   - Destroyer
+  - Magazine
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Gun(Ignore Bullet Raycast)
   - Water
   - UI
-  - 
+  - Grab Interactable
   - 
   - 
   - 
