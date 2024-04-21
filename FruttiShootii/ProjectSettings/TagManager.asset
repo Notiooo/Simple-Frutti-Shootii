@@ -8,6 +8,7 @@ TagManager:
   - Flame
   - Water
   - Destroyer
+  - Magazine
   layers:
   - Default
   - TransparentFX
@@ -18,6 +19,7 @@ TagManager:
   - Ignore Doors
   - Door
   - Terrain
+  - Grab Interactable
   - 
   - 
   - 
