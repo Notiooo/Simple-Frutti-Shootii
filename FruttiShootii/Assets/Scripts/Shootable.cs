@@ -72,6 +72,11 @@ public class Shootable : MonoBehaviour
             if (animator != null) {
                 animator.enabled = false;
             }
+            //this.GetComponentInChildren<PlantTransmutator>()?.Tansmutate();
         }
+    }
+
+    public bool IsAlive() {
+        return alive;
     }
 }
