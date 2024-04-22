@@ -21,6 +21,10 @@ public class Reanimate : MonoBehaviour
     public float stage3EffectTime = 1f;
     private float stage3Timer;
 
+
+    public float stage4EffectTime = 2f;
+    private float stage4Timer; 
+
     float baseX = 0f;
     float baseZ = 0f;
 
@@ -33,19 +37,32 @@ public class Reanimate : MonoBehaviour
     public Rigidbody rigidbody;
 
     public float velocity = 10f;
+    private UnityEngine.AI.NavMeshAgent agent;
+
+    private Vector3 targetPosition;
+    private bool hasTarget = false;
+
+
+    private float timer = 0f;
+    private float interval = 2f; // Interwał czasu (10 sekund)
+
 
     void Start()
     {
         isActive = false;
         stage1Timer = stage1EffectTime;
         stage2Timer = stage2EffectTime;
-         stage3Timer = stage3EffectTime;
+        stage3Timer = stage3EffectTime;
+        stage4Timer = stage4EffectTime;
 
         baseX = transform.position.x;
         baseZ = transform.position.z;
         rigidbody.freezeRotation = true; 
         rigidbody.isKinematic = true; 
         rigidbody.detectCollisions = false; 
+
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.enabled = false;
 
     }
 
@@ -78,6 +95,33 @@ public class Reanimate : MonoBehaviour
                 transmutation = true;
                 rigidbody.detectCollisions = true; 
                 plantTransmutator.Tansmutate();
+                
+            } else if(stage4Timer > 0f){
+
+                stage4Timer -= Time.deltaTime;
+            } else {
+                agent.enabled = true;
+            }
+
+        }
+
+        if(agent.enabled){
+            timer += Time.deltaTime;
+            if (!hasTarget || timer >= interval){
+                timer = 0f;
+                GetRandomPoint();
+            }
+            else {
+                agent.SetDestination(targetPosition);
+                if (agent.remainingDistance <= agent.stoppingDistance) {
+                    hasTarget = false;
+                }
+
+
+                Vector3 direction = (targetPosition - transform.position).normalized;
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                Vector3 targetRotation = new Vector3(0, targetAngle, 0);
+                transform.rotation = Quaternion.Euler(targetRotation);
             }
         }
 
@@ -87,8 +131,7 @@ public class Reanimate : MonoBehaviour
 
     }
 
-    private float timer = 0f;
-    private float interval = 2f; // Interwał czasu (10 sekund)
+
     void TurnAlive(){
         if(isActive == false){
             timer += Time.deltaTime;
@@ -96,6 +139,19 @@ public class Reanimate : MonoBehaviour
                 timer = 0f;
                 isActive = (Random.Range(0, 10) == 0);
             }
+        }
+    }
+
+
+
+
+    void GetRandomPoint()
+    {
+        UnityEngine.AI.NavMeshHit hit;
+        if (UnityEngine.AI.NavMesh.SamplePosition(Random.insideUnitSphere * 10f + transform.position, out hit, 10f, UnityEngine.AI.NavMesh.AllAreas))
+        {
+            targetPosition = hit.position;
+            hasTarget = true;
         }
     }
 
