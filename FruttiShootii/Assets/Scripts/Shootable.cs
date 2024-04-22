@@ -40,17 +40,13 @@ public class Shootable : MonoBehaviour
 
     public void Hit(float damage, Vector3 hitForce, Vector3 hitPosition)
     {
-        if (!alive)
-        {
-            return;
-        }
-
         Debug.Log("HIT!");
         health -= damage;
         if (health < 0)
         {
+            if (alive)
+                LevelMgr.Instance.VegetableDied(this);
             alive = false;
-            LevelMgr.Instance.VegetableDied(this);
         }
 
         // Play sound
