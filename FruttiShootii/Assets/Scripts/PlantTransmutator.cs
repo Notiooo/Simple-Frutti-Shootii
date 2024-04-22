@@ -15,7 +15,10 @@ public class PlantTransmutator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator.speed = 0f;
+        if (animator != null)
+        {
+            animator.speed = 0f;
+        }
         plantMesh.SetActive(true);
         humanMesh.SetActive(false);
     }
@@ -28,7 +31,10 @@ public class PlantTransmutator : MonoBehaviour
 
     public void Tansmutate() {
         if(stage == 0){
-            animator.speed = 1f;
+            if (animator != null)
+            {
+                animator.speed = 1f;
+            }
             stage = 1;
         } else if(stage == 1){
             plantMesh.SetActive(false);
