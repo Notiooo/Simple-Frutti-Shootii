@@ -25,8 +25,13 @@ public class Reanimate : MonoBehaviour
     public float stage4EffectTime = 2f;
     private float stage4Timer; 
 
+    
+	private Shootable shootable;
+
     float baseX = 0f;
     float baseZ = 0f;
+
+    private bool stage5 = false;
 
     public float frequency = 15f;
     public float amplitude = 0.001f;
@@ -49,6 +54,8 @@ public class Reanimate : MonoBehaviour
 
     void Start()
     {
+
+        shootable = this.GetComponent<Shootable>();
         isActive = false;
         stage1Timer = stage1EffectTime;
         stage2Timer = stage2EffectTime;
@@ -70,7 +77,7 @@ public class Reanimate : MonoBehaviour
     void Update()
     {
         TurnAlive();
-        if(isActive){
+        if(isActive && shootable.IsAlive()){
             if(stage1Timer > 0f){
                 frequency +=  stage1FrequencyMultiplayer * Time.deltaTime / stage1EffectTime;
                 amplitude +=  stage1AmplitudeMultiplayer * Time.deltaTime / stage1EffectTime;
@@ -99,9 +106,11 @@ public class Reanimate : MonoBehaviour
             } else if(stage4Timer > 0f){
 
                 stage4Timer -= Time.deltaTime;
-            } else {
+            } else if(stage5 == false){
                 agent.enabled = true;
+                stage5 = true;
             }
+        
 
         }
 
@@ -118,8 +127,9 @@ public class Reanimate : MonoBehaviour
                 }
 
 
-                Vector3 agentDirection = agent.velocity.normalized;
-                transform.LookAt(transform.position - agentDirection);
+               Vector3 agentDirection = agent.velocity.normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(agentDirection, Vector3.up);
+                transform.rotation = Quaternion.Euler(0, targetRotation.eulerAngles.y + 180f, 0);
             }
 
         }
