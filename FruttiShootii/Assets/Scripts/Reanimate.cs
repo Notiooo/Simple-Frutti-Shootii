@@ -36,7 +36,7 @@ public class Reanimate : MonoBehaviour
     public PlantTransmutator plantTransmutator;
     public Rigidbody rigidbody;
 
-    public float velocity = 10f;
+    public float velocity = 11f;
     private UnityEngine.AI.NavMeshAgent agent;
 
     private Vector3 targetPosition;
@@ -118,14 +118,11 @@ public class Reanimate : MonoBehaviour
                 }
 
 
-                Vector3 direction = (targetPosition - transform.position).normalized;
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                Vector3 targetRotation = new Vector3(0, targetAngle, 0);
-                transform.rotation = Quaternion.Euler(targetRotation);
+                Vector3 agentDirection = agent.velocity.normalized;
+                transform.LookAt(transform.position - agentDirection);
             }
+
         }
-
-
 
 
 
