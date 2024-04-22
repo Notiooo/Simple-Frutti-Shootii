@@ -6,7 +6,7 @@ public class FieldZoneMgr : MonoBehaviour
 {
     // Ile sekund podlewania jest wymaganych do zmiany poziomu
     [SerializeField]
-    private float RequiredWateringTime = 10.0f;
+    private float requiredWateringTime = 10.0f;
 
     public static FieldZoneMgr Instance { get; private set; }
 
@@ -32,7 +32,7 @@ public class FieldZoneMgr : MonoBehaviour
         if (watering && PlayerZoneTouchesCount > 0)
         {
             wateringTime += Time.deltaTime;
-            if (wateringTime >= RequiredWateringTime)
+            if (wateringTime >= requiredWateringTime)
             {
                 SceneTransitionManager.singleton.GoToSceneAsync(2);
                 finished = true;

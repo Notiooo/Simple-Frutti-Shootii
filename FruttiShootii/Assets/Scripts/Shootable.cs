@@ -38,15 +38,24 @@ public class Shootable : MonoBehaviour
         KillMeTest();
     }
 
-    public void Hit(float damage, Vector3 hitForce, Vector3 hitPosition) {
+    public void Hit(float damage, Vector3 hitForce, Vector3 hitPosition)
+    {
+        if (!alive)
+        {
+            return;
+        }
+
         Debug.Log("HIT!");
         health -= damage;
-        if(health < 0) {
+        if (health < 0)
+        {
             alive = false;
+            LevelMgr.Instance.VegetableDied();
         }
 
         // Play sound
-        if(audioSource != null) {
+        if (audioSource != null)
+        {
             audioSource.Play();
         }
 
@@ -94,10 +103,12 @@ public class Shootable : MonoBehaviour
         return alive;
     }
 
-    private void KillMeTest(){
+    private void KillMeTest()
+    {
         if (debugMode && Input.GetKeyDown(KeyCode.P))
         {
-            Hit(100f, transform.position - player.position, transform.position + new Vector3(0f, 0.5f, 0f));
+            Debug.Log("KIL");
+            Hit(100f, Vector3.left, transform.position + new Vector3(0f, 0.5f, 0f));
         }
     }
 }
