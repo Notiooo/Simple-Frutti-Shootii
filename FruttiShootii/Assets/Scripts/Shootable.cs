@@ -50,7 +50,7 @@ public class Shootable : MonoBehaviour
         if (health < 0)
         {
             alive = false;
-            LevelMgr.Instance.VegetableDied();
+            LevelMgr.Instance.VegetableDied(this);
         }
 
         // Play sound
