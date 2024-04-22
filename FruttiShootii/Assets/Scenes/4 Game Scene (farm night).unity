@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0012437489, g: 0.0018378857, b: 0.0054491954, a: 1}
+  m_IndirectSpecularColor: {r: 0.0012437442, g: 0.0018378802, b: 0.0054491763, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2677,7 +2677,7 @@ Transform:
   m_GameObject: {fileID: 150842395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36144, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6378,7 +6378,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34331,7 +34331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567421d35f79d044d9890b9d960f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RequiredWateringTime: 10
+  requiredWateringTime: 10
 --- !u!1001 &1607575081
 PrefabInstance:
   m_ObjectHideFlags: 0

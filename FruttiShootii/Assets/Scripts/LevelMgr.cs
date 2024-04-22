@@ -7,6 +7,7 @@ public class LevelMgr : MonoBehaviour
     // Ile wymaganych martwych warzyw do zmiany w ludzi
     [SerializeField]
     private int requiredDeadCount = 5;
+    public AudioClip tansmutateClip;
 
     public static LevelMgr Instance {  get; private set; }
 
@@ -43,6 +44,7 @@ public class LevelMgr : MonoBehaviour
                     {
                         trans.Tansmutate();
                         trans.Tansmutate(); // dwa razy, bo ma dwa stage D:
+                        NarrationManager.Instance.PlayNarration(tansmutateClip, false, true);
                     }
                 }
                 oneOfShootable.Hit(100, Vector3.zero, Vector3.zero);
